@@ -2,18 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\environmet_type;
+use App\Models\EnvironmentType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class EnvironmetTypeSeeder extends Seeder
+class EnvironmentTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        environmet_type::insert([
+        EnvironmentType::insert([
             ['description'=>'Aula'],
             ['description'=>'Taller'],
             ['description'=>'Laboratorio'],

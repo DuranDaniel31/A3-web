@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('location', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('location_id');
             $table->string('name')->comment('Nombre De La Ubicación');
             $table->string('address')->comment('Dirección');
             $table->string('status')->comment('Estado');
+
             $table->timestamps();
         });
     }

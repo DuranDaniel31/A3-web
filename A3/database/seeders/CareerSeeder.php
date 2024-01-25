@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\career;
+use App\Models\Career;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,7 +13,7 @@ class CareerSeeder extends Seeder
      */
     public function run(): void
     {
-        career::insert([
+        Career::insert([
             ['name'=> 'PROGRAMACIÓN DE SOFWARE', 'type'=> 'TECNICO'],
             ['name'=> 'ANALISIS Y DESARROLLO DE SOFTWARE', 'type'=> 'TECNOLOGO'],
             ['name'=> 'APOYO ADMINISRACTIVO EN SALUD', 'type'=> 'TECNICO'],
