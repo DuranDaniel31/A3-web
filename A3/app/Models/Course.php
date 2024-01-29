@@ -11,4 +11,17 @@ class Course extends Model
 
     protected $table = 'course';
     protected $fillable = ['shift', 'career_id', 'initial_date', 'final_date', 'status'];
+
+    public function career()
+    {
+        return $this->belongsTo(Career::class,'id_career');
+    }
+
+    public function shedulinng_enviroment()
+    {
+        return $this->belongsTo(SchedulingEnviroment::class, 'id_course');
+
+    }
+
+    
 }
