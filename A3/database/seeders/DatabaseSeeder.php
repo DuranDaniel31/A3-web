@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(CareerSeeder::class);
         $this->call(EnvironmentTypeSeeder::class);
+        $this->call(CourseSeeder::class);
         $this->call(LocationSeeder::class);
 
         Instructor::factory()->create([
