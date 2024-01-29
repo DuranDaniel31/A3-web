@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 
 class CareerSeeder extends Seeder
 {
-    /**
+    /*0*
      * Run the database seeds.
      */
     public function run(): void

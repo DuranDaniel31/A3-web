@@ -5,12 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Location extends Model
+class LearningEnviroment extends Model
 {
     use HasFactory;
-    protected $table = 'location';
+    protected $table = 'learning_enviroment';
     protected $fillable = ['name',
-    'address',
+    'capacity',
+    'area_mt2',
+    'floor',
+    'inventory',
+    'type_id',
+    'location_id',
     'status'];
-
 }
