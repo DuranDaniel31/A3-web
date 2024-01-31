@@ -15,4 +15,14 @@ class SchedulingEnviroment extends Model
     'initial_hour',
     'final_hour',
     'enviroment_id'];
+
+    public function sheduling_enviroment()
+    {
+        return $this->belongsTo(SchedulingEnviroment::class,'id_enviroment');
+    }
+
+    public function instructor()
+    {
+        return $this->belongsTo(Instructor::class,'document');
+    }
 }

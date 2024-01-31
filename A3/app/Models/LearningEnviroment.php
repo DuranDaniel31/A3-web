@@ -17,4 +17,18 @@ class LearningEnviroment extends Model
     'type_id',
     'location_id',
     'status'];
+
+    public function environment_type()
+    {
+        return $this->belongsTo(EnvironmentType::class,'id_type');
+    }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class,'id_location');
+    }
+    public function scheduling_enviroment()
+    {
+        return $this->hasMany(SchedulingEnviroment::class);
+    }
 }

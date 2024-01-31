@@ -12,5 +12,9 @@ class Location extends Model
     protected $fillable = ['name',
     'address',
     'status'];
+    public function learning_enviroment()
+    {
+        return $this->hasMany(LearningEnviroment::class);
+    }
 
 }

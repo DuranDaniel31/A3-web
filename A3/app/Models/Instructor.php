@@ -17,4 +17,10 @@ class Instructor extends Model
     'password',
     'type',
     'profile'];
+
+    public function Scheduling_enviroment()
+    {
+        return $this->hasMany(SchedulingEnviroment::class);
+    }
+    
 }
