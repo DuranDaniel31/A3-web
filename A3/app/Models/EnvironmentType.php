@@ -11,20 +11,9 @@ class EnvironmentType extends Model
     protected $table = 'environment_type';
     protected $fillable = ['description'];
     
-    public function enviroment_type()
+    public function learnig_environment()
     {
-        return $this->belongsTo(EnvironmentType::class ,'id_type');
         
     }
-
-    public function location()
-    {
-        return $this->belongsTo(Location::class ,'id_location');
-    }
     
-    public function learnig_enviroment()
-    {
-        return $this->hasMany(LearningEnviroment::class ,'id_location');
-    }
-
 }
