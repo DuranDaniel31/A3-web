@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LearningEnviroment extends Model
+class LearningEnvironment extends Model
 {
     use HasFactory;
-    protected $table = 'learning_enviroment';
+    protected $table = 'learning_environment';
     protected $fillable = ['name',
     'capacity',
     'area_mt2',
@@ -29,6 +29,6 @@ class LearningEnviroment extends Model
     }
     public function scheduling_enviroment()
     {
-        return $this->hasMany(SchedulingEnviroment::class);
+        return $this->hasMany(SchedulingEnvironment::class);
     }
 }

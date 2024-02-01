@@ -2,20 +2,19 @@
 
 namespace Database\Seeders;
 
-use App\Models\Career;
+use App\Models\EnvironmentType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TestCareerSedeer extends Seeder
+class TestEnvironmentTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $career = Career::fin(1);
-        $career->name = 'Auxiliar de enfermeria';
-        $career->type ='Tecnico';
-        $career->save();
+        $environment_type = new EnvironmentType();
+        $environment_type->description = 'Aula';
+        $environment_type->save();
     }
 }

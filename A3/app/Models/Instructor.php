@@ -20,7 +20,7 @@ class Instructor extends Model
 
     public function Scheduling_enviroment()
     {
-        return $this->hasMany(SchedulingEnviroment::class);
+        return $this->hasMany(SchedulingEnvironment::class);
     }
     
 }

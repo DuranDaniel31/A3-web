@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('course', function (Blueprint $table) {
             $table->id();
-            $table->integer('code')->unique()->comment('ficha del curso');
+          
             $table->string('shift')->comment('Tipo De Jornada');
             $table->foreignId('career_id')->constrained('career')->onDelete('cascade')->onUpdate('cascade');
             $table->date('initial_date')->comment('Fecha Inicial');

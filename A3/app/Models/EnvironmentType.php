@@ -10,21 +10,10 @@ class EnvironmentType extends Model
     use HasFactory;
     protected $table = 'environment_type';
     protected $fillable = ['description'];
-    
-    public function enviroment_type()
+ 
+    public function learning_environment()
     {
-        return $this->belongsTo(EnvironmentType::class ,'id_type');
-        
-    }
-
-    public function location()
-    {
-        return $this->belongsTo(Location::class ,'id_location');
-    }
-    
-    public function learnig_enviroment()
-    {
-        return $this->hasMany(LearningEnviroment::class ,'id_location');
+        return $this->belongsTo(LearningEnvironment::class);
     }
 
 }
