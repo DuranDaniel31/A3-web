@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('title', 'Listado causales')
-@section('header', 'Listado causales')
+@section('title', 'Listado Del Ambiente')
+@section('header', 'Listado Del Ambiente ')
 @section('content')
     <div class="row">
         <div class="col-lg-12 mb-4 d-grip gap-2 d-md-block">

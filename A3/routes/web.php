@@ -91,3 +91,18 @@ Route::get('/learning_environment/index', function () {
 Route::get('/learning_environment/edit', function () {
     return view('learning_environment.edit');
 })->name('learning_environment.edit');
+
+
+
+Route::get('scheluding_environment/create', function (){
+    return view('scheluding_environment.create');
+})->name('scheluding_environment.create');
+
+
+Route::get('scheluding_environment/index', function (){
+    return view('scheluding_environment.index');
+})->name('scheluding_environment.index');
+
+Route::get('scheluding_environment/edit', function (){
+    return view('scheluding_environment.edit');
+})->name('scheluding_environment.edit');

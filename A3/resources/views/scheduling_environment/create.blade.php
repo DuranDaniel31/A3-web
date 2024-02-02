@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('title', 'Crear Localización')
-@section('header', 'Crear Localización')
+@section('title', 'Crear Entorno de planeación')
+@section('header', 'Crear Entorno De Planeación')
 @section('content')
     @include('templates.messages')
     <div class="row">

@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('Lista de cursos ')
-@section('Lista de cursos')
+@section('Lista de Instructores ')
+@section('Lista de Instructores')
 
 @section('content')
     @include('templates.messages')

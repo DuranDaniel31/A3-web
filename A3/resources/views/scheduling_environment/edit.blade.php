@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('title', 'Editar Planificación_Ambiente')
-@section('header', 'Editar Planificación_Ambiente')
+@section('title', 'Editar Entorno De Planeación')
+@section('header', 'Editar PEntorno De Planeación')
 @section('content')
     @include('templates.messages')
     <div class="row">
