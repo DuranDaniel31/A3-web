@@ -65,8 +65,8 @@
                 </a>
                 <div id="collapse3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Consultar</a>
-                        <a class="collapse-item" href="#">Crear</a>
+                        <a class="collapse-item" href="{{ route('course.index')}}">Consultar</a>
+                        <a class="collapse-item" href="{{ route('course.create') }}">Crear</a>
                     </div>
                 </div>
             </li>
@@ -88,8 +88,8 @@
                 </a>
                 <div id="collapse4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Consultar</a>
-                        <a class="collapse-item" href="#">Crear</a>
+                        <a class="collapse-item" href="{{ route('instructor.index') }}">Consultar</a>
+                        <a class="collapse-item" href="{{ route('instructor.create') }}">Crear</a>
                     </div>
                 </div>
             </li>
