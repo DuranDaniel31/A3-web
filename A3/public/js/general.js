@@ -1,14 +1,12 @@
+
 $(document).ready(function(){
-    $('#table_data').DataTable()
+    $('#table_data').DataTable();
 });
 
-function revome()
+function remove() 
 {
-    if (confirm("Esta seguro de eliminar el registro?"))
-    return true;
-    
-    else 
-
-    return false;
-
+    if(confirm("¿Está seguro de eliminar el registro?"))
+        return true;
+    else
+        return false; 
 }

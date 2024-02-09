@@ -43,6 +43,7 @@ class DatabaseSeeder extends Seeder
             'type' => 'Planta',
             'profile' => 'Instructor De Integralidad'
         ]);
+        
 
         User::factory(5)->create();
 
@@ -52,6 +53,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TestEnvironmentTypeSeeder ::class);
 
         $this->call(TestLearningEnvironmentSeeder::class); 
-        
+        $this->call(TestSchedulingEnviromentSeeder::class);
     }
 }

@@ -1,9 +1,9 @@
 @extends('templates.base')
-@section('title', 'Listado Del Ambiente')
-@section('header', 'Listado Del Ambiente ')
+@section('title', 'Listado de tipos de ambientes')
+@section('header', 'Listado de tipos de ambientes')
 @section('content')
     <div class="row">
-        <div class="col-lg-12 mb-4 d-grip gap-2 d-md-block">
+        <div class="col-lg-12 mb-4 d-grip gap-2 d--md-block">
             <a href="{{ route('environmet_type.create') }}" class="btn btn-primary">Crear</a>
         </div>
     </div>
@@ -22,26 +22,30 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>5</td>
-                        <td>Auditorio</td>
+                        <td>1</td>
+                        <td>AULA VIRTUAL</td>
                         <td>
-                            <a href="#" title="editar" class="btn btn-info btn-circle btn-sm">
+                            <a href="#" title="editar" 
+                                class="btn btn-info btn-circle btn-sm">
                                 <i class="far fa-edit"></i>
                             </a>
-                            <a href="#" title="eliminar" class="btn btn-danger btn-circle btn-sm" onclick="return remove()">
+                            <a href="#" title="eliminar" 
+                                class="btn btn-danger btn-circle btn-sm"
+                                onclick="return remove()">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>
                     </tr>
                 </tbody>
+
             </table>
         </div>
     </div>
 
- @endsection
+@endsection
 
- @section('scripts')
-    
- <script src="{{ asset('js/general.js') }}"></script>
+@section('scripts')
+    <script src="{{ asset('js/general.js') }}"></script>
+@endsection
 
- @endsection
+

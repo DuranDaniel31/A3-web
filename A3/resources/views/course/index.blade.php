@@ -1,50 +1,60 @@
 @extends('templates.base')
-@section('Lista de cursos ')
-@section('Lista de cursos')
-
+@section('title', 'Listado de curso')
+@section('header', 'Listado de curso')
 @section('content')
+    <div class="row">
+        <div class="col-lg-12 mb-4 d-grip gap-2 d--md-block">
+            <a href="{{ route('course.create') }}" class="btn btn-primary">Crear</a>
+        </div>
+    </div>
+
     @include('templates.messages')
 
     <div class="row">
         <div class="col-lg-12 mb-4">
-            <table id="table_data" class="table-striped table-hover">
+            <table id="table_data" class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>id</th>
-                        <th>codigo</th>
-                        <th>Identificacion de la carrera</th>
-                        <th>Fecha inicial</th>
-                        <th>Fecha final</th>
+                        <th>Id</th>
+                        <th>Código</th>
+                        <th>Jornada</th>
+                        <th>Carrera</th>
+                        <th>Fecha Inicial</th>
+                        <th>Fecha Final</th>
                         <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>2.171.233 </td>
+                        <td>2771230</td>
                         <td>Diurna</td>
                         <td>1</td>
-                        <td>2023-08-15</td>
-                        <td>2024-10-04</td>
+                        <td>2023/08/15</td>
+                        <td>2024/10/04</td>
                         <td>Lectiva</td>
+                        
                         <td>
-                            <a href="{{ route('course.create') }}" title="editar" 
-                            class="btn btn-info-circle btn-sm">
-                            <i class="far-fa-edit"></i>
-                        </a>
-                        <a href="#" title="eliminar" class="btn btn-danger btn-circle btn-sm" onclick="return remove()">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                            <a href="#" title="editar" 
+                                class="btn btn-info btn-circle btn-sm">
+                                <i class="far fa-edit"></i>
+                            </a>
+                            <a href="#" title="eliminar" 
+                                class="btn btn-danger btn-circle btn-sm"
+                                onclick="return remove()">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
     </div>
-</div>
+
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/general.js') }}"></script>
-
+    <script src="{{ asset('js/general.js') }}"></script>
 @endsection
 
