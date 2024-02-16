@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Location;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
@@ -11,7 +12,8 @@ class LocationController extends Controller
      */
     public function index()
     {
-        //
+        $locations = Location::all();
+        return view('location.index', compact('locations'));
     }
 
     /**
@@ -19,7 +21,7 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        return view('location.create');
     }
 
     /**
@@ -27,7 +29,9 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $location = Location::create($request->all());
+        session()->flash('message', 'Registro creado exitosamente');
+        return redirect()->route('location.index');
     }
 
     /**
@@ -43,7 +47,12 @@ class LocationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $location = Location::find($id);
+        if ($location) {
+            return view('location.edit', compact('location'));//si la causal existe
+        } else {
+            return redirect()->route('location.index');
+        }
     }
 
     /**
@@ -51,7 +60,14 @@ class LocationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $location = Location::find($id);
+        if ($location) {
+            $location->update($request->all());
+            session()->flash('message', 'Registro actualizado exitosamente');
+        } else {
+            session()->flash('warning', 'No se encuentra el registro solicitado');
+        }
+        return redirect()->route('location.index');
     }
 
     /**
@@ -59,6 +75,13 @@ class LocationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $location = Location::find($id);
+        if ($location) {
+            $location->delete();//delete from causal where id = x
+            session()->flash('message', 'Registro eliminado exitosamente');
+        } else {
+            session()->flash('warning', 'No se encuentra el registro solicitado');
+        }
+        return redirect()->route('location.index');
     }
 }
