@@ -38,10 +38,10 @@
                 <div id="collapse1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('environmet_type.index') }}">Consultar</a>
-                        <a class="collapse-item" href="{{ route('environmet_type.create') }}">Crear</a>                        
+                        <a class="collapse-item" href="{{ route('environmet_type.create') }}">Crear</a>
                     </div>
                 </div>
-            </li> 
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2"
@@ -55,7 +55,7 @@
                         <a class="collapse-item" href="{{ route('learning_environment.create') }}">Crear</a>
                     </div>
                 </div>
-            </li> 
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse3"
@@ -142,7 +142,7 @@
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>               
+            </div>
 
         </ul>
 
@@ -188,11 +188,11 @@
                 </a>
                 <div id="collapse1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('enviroment_type.index') }}">Consultar</a>
-                        <a class="collapse-item" href="{{ route('enviroment_type.create') }}">Crear</a>                        
+                        <a class="collapse-item" href="{{ route('environment_type.index') }}">Consultar</a>
+                        <a class="collapse-item" href="{{ route('environment_type.create') }}">Crear</a>
                     </div>
                 </div>
-            </li> 
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2"
@@ -206,7 +206,7 @@
                         <a class="collapse-item" href="{{ route('learning_enviroment.create') }}">Crear</a>
                     </div>
                 </div>
-            </li> 
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse3"
@@ -293,7 +293,7 @@
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>               
+            </div>
 
         </ul>
 

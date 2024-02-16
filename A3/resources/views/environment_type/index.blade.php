@@ -1,12 +1,12 @@
 @extends('templates.base')
-@section('title', 'Listado de curso')
-@section('headers', 'Listado de curso')
+@section('title', 'Listado de tipos de ambientes')
+@section('headers', 'Listado de tipos de ambientes')
 
 @section('content')
     @include('templates.messages')
     <div class="row">
         <div class="col-lg-12 mb-4 d-grip gap-2 d-md-block">
-            <a href="{{ route('course.create') }}" class="btn btn-primary">Crear actividad</a>
+            <a href="{{ route('environment_type.create') }}" class="btn btn-primary">Crear actividad</a>
         </div>
     </div>
 
@@ -18,34 +18,24 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Código</th>
-                        <th>Jornada</th>
-                        <th>Carrera</th>
-                        <th>Fecha inicial</th>
-                        <th>Fecha final</th>
-                        <th>Estado</th>
+                        <th>Descripción</th>
+                        <th>Acciones</th>
+
                     </tr>
 
                 </thead>
                 <tbody>
-                    @foreach ($courses as $course)
-
+                    @foreach ($environment_types as $environment_type)
                         <tr>
-
-                            <td>{{ $course['id']}}</td>
-                            <td>{{ $course['code']}}</td>
-                            <td>{{ $course['shift']}}</td>
-                            <td>{{ $course['career_id']}}</td>
-                            <td>{{ $course['initial_date']}}</td>
-                            <td>{{ $course['final_date']}}</td>
-                            <td>{{ $course['status']}}</td>
+                            <td>{{ $environment_type['id'] }}</td>
+                            <td>{{ $environment_type['description'] }}</td>
 
                             <td>
-                                <a href="{{ route('course.edit', $course['id']) }}" title="editar"
+                                <a href="{{ route('environment_type.edit', $environment_type['id']) }}" title="editar"
                                     class="btn btn-info btn-circle btn-sm">
                                     <i class="far fa-edit"></i>
                                 </a>
-                                <a href="{{ route('course.destroy', $course['id']) }}" title="eliminar"
+                                <a href="{{ route('environment_type.destroy', $environment_type['id']) }}" title="eliminar"
                                     class="btn btn-danger btn-circle btn-sm"
                                     onclick="return remove()">
                                     <i class="fas fa-trash"></i>

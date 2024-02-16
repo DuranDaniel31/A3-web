@@ -1,30 +1,21 @@
 @extends('templates.base')
 
-@section('title', 'Crear Carrera')
-@section('headers', 'Crear Carrera')
+@section('title', 'Crear tipo de ambientes')
+@section('headers', 'Crear tipo de ambientes')
 
 @section('content')
     @include('templates.messages')
 
     <div class="row">
         <div class="col lg-12 mb-4">
-            <form action="{{ route('career.store') }}" method="POST">
+            <form action="{{ route('environment_type.store') }}" method="POST">
                 @csrf
 
                 <div class="row form-group">
-                    <div class="col-lg-6 mb-4">
-                        <label for="name">Nombre</label>
+                    <div class="col-lg-12 mb-4">
+                        <label for="description">Descripción</label>
                         <input type="text" class="form-control"
-                        id="name" name="name" required>
-                    </div>
-                    <div class="col-lg-6 mb-4">
-                        <label for="type">Tipo</label>
-                        <select name="type" id="type"
-                        class="form-control" required>
-                        <option value="Seleccionar">Seleccionar</option>
-                        <option value="Técnico">Técnico</option>
-                        <option value="Tecnologo">Tecnólogo</option>
-                        </select>
+                        id="description" name="description" required>
                     </div>
                 </div>
 
@@ -35,7 +26,7 @@
                         </button>
                     </div>
                     <div class="col-lg-6 mb-4">
-                        <a href="{{ route('career.index') }}" class="btn btn-secondary btn-block">
+                        <a href="{{ route('environment_type.index') }}" class="btn btn-secondary btn-block">
                             Cancelar
                         </a>
                     </div>
@@ -45,7 +36,7 @@
                 <div class="col-lg-12 mb-4">
                     <div class="alert alert-warning" role="alert">
                         <i class="fa-solid fa-lightbulb"></i>
-                        Para añadir Carreras la Carrera primero debe crearlas y luego dar click en la accion editar
+                        Para añadir Tipo de ambiente los Ambientes primero debe crearlas y luego dar click en la accion editar
                     </div>
                 </div>
             </div>
