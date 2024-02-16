@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -11,7 +12,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Course::all();
+
+        return view('course.index', compact('courses'));
     }
 
     /**
@@ -19,7 +22,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('course.create');
     }
 
     /**
@@ -27,7 +30,9 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $course = Course::create($request->all());
+        session()->flash('message', 'Registro creado exitosamente');
+        return redirect()->route('course.index');
     }
 
     /**
@@ -43,7 +48,12 @@ class CourseController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $course = Course::find($id);
+        if ($course) {
+            return view('course.edit', compact('course'));//si la causal existe
+        } else {
+            return redirect()->route('course.index');
+        }
     }
 
     /**
@@ -51,14 +61,30 @@ class CourseController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $course = Course::find($id);
+        if ($course)//si la causal existe
+        {
+            $course->update($request->all());//delete from causal where id = x
+            session()->flash('message', 'Registro actualizado exitosamente');
+        } else {
+            session()->flash('warning', 'No se encuentra el registro solicitado');
+        }
+        return redirect()->route('course.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        //
+    { {
+            $course = Course::find($id);
+            if ($course) {
+                $course->delete();//delete from causal where id = x
+                session()->flash('message', 'Registro eliminado exitosamente');
+            } else {
+                session()->flash('warning', 'No se encuentra el registro solicitado');
+            }
+            return redirect()->route('course.index');
+        }
     }
 }
