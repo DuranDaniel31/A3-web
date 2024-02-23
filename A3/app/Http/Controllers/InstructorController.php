@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Instructor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class InstructorController extends Controller
 {
@@ -21,7 +22,12 @@ class InstructorController extends Controller
      */
     public function create()
     {
-        return view('instructor.create');
+        $types = array(
+            ['name' => 'CONTRATISTA' , 'value' => 'CONTRATISTA'],
+            ['name' => 'PLANTA' , 'value' => 'PLANTA'],
+        );
+
+        return view('instructor.create', compact( 'types'));
     }
 
     /**
@@ -29,15 +35,11 @@ class InstructorController extends Controller
      */
     public function store(Request $request)
     {
-        $instructor = Instructor::where('document', '=', $request->document)
-            ->first();
-        if ($instructor) {
-            session()->flash('error', 'Ya existe un instructor con ese documento');
-            return redirect()->route('instructor.create');
-        }
+        $request['password'] = Hash::make($request['password']);
         $instructor = Instructor::create($request->all());
         session()->flash('message', 'Registro creado exitosamente');
         return redirect()->route('instructor.index');
+
     }
 
     /**
@@ -53,33 +55,37 @@ class InstructorController extends Controller
      */
     public function edit(string $id)
     {
-        $instructor = Instructor::where('document', '=', $id)
-            ->first();
-        if ($instructor) {
-            return view('instructor.edit', compact('instructor'));
+        $instructor = Instructor::find($id);
+        if($instructor)
+        {
+            $types = array(
+                ['name' => 'CONTRATISTA' , 'value' => 'CONTRATISTA'],
+                ['name' => 'PLANTA' , 'value' => 'PLANTA'],
+            );
+
+            return view('instructor.edit', compact('instructor', 'types'));
 
         }
-
-        session()->flash('warning', 'No se encuentra el registro solicitado');
+        session()->flash('warning','No se encontro el registro solicitado');
         return redirect()->route('instructor.index');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $document)
+    public function update(Request $request, string $id)
     {
-        $instructor = Instructor::where('document', '=', $document)
-            ->first();
-        if ($instructor) {
 
-            $instructor->name = $request->name;
-            $instructor->especiality = $request->especiality;
-            $instructor->phone = $request->phone;
-            $instructor->save();
+        $request['password'] = Hash::make($request['password']);
+        $instructor = Instructor::find($id);
+        if($instructor)
+        {
+            $instructor->update($request->all());
             session()->flash('message', 'Registro actualizado exitosamente');
-        } else {
-            session()->flash('warning', 'No se encuentra el registro solicitado');
+        }
+        else
+        {
+             session()->flash('warning', 'No se encuentra el registro solicitado');
         }
 
         return redirect()->route('instructor.index');
@@ -90,18 +96,18 @@ class InstructorController extends Controller
      */
     public function destroy(string $id)
     {
-        $instructor = Instructor::where('document', '=', $id)
-            ->first();
-        if ($instructor) {
-
-            $instructor->delete();
-
+        $instructor = Instructor::find($id);
+        if($instructor)
+        {
+            $instructor->delete(); //Delete from causal where id = x
             session()->flash('message', 'Registro eliminado exitosamente');
-        } else {
-            session()->flash('warning', 'No se encuentra el registro solicitado');
         }
+        else
+        {
+            return redirect()->route('instructor.index');
+            session()->flash('warning', 'El registro Solicitado no se encuentra');
 
+        }
         return redirect()->route('instructor.index');
     }
 }
-

@@ -12,7 +12,7 @@ class CareerController extends Controller
      */
     public function index()
     {
-        $careers = Career::all();
+        $careers = Career ::all();
         return view('career.index', compact('careers'));
     }
 
@@ -21,7 +21,13 @@ class CareerController extends Controller
      */
     public function create()
     {
-        return view('career.create');
+        $types = array(
+            ['name' => 'TECNICO' , 'value' => 'TECNICO'],
+            ['name' => 'TEGNOLOGO' , 'value' => 'TEGNOLOGO'],
+            ['name' => 'CURSO CORTO' , 'value' => 'CURSO CORTO'],
+        );
+
+        return view('career.create', compact( 'types'));
     }
 
     /**
@@ -30,7 +36,7 @@ class CareerController extends Controller
     public function store(Request $request)
     {
         $career = Career::create($request->all());
-        session()->flash('message', 'Registro creado exitosamente');
+        session()->flash('message','Registro creado exitosamente');
         return redirect()->route('career.index');
     }
 
@@ -48,12 +54,18 @@ class CareerController extends Controller
     public function edit(string $id)
     {
         $career = Career::find($id);
-        if($career){
-            return view('career.edit', compact('career'));//si la causal existe
+        if($career)
+        {
+            $types = array(
+                ['name' => 'TECNICO' , 'value' => 'TECNICO'],
+                ['name' => 'TEGNOLOGO' , 'value' => 'TEGNOLOGO'],
+                ['name' => 'CURSO CORTO' , 'value' => 'CURSO CORTO'],
+            );
+            return view('career.edit', compact('career' , 'types'));
         }
-        else{
-            return redirect()->route('career.index');
-        }
+
+        return redirect()->route('career.index');
+
     }
 
     /**
@@ -62,13 +74,14 @@ class CareerController extends Controller
     public function update(Request $request, string $id)
     {
         $career = Career::find($id);
-        if($career)//si la causal existe
+        if($career)
         {
-            $career->update($request->all());//delete from causal where id = x
-            session()->flash('message', 'Registro actualizado exitosamente');
+            $career->update($request->all());
+            session()->flash('message','Registro actualizado exitosamente');
         }
-        else{
-            session()->flash('warning', 'No se encuentra el registro solicitado');
+        else
+        {
+            session()->flash('warning','No se encuentra el registro solicitado');
         }
         return redirect()->route('career.index');
     }
@@ -81,13 +94,13 @@ class CareerController extends Controller
         $career = Career::find($id);
         if($career)
         {
-            $career->delete();//delete from causal where id = x
-            session()->flash('message', 'Registro eliminado exitosamente');
+            $career->delete();
+            session()->flash('message','Registro eliminado exitosamente');
         }
-        else{
-            session()->flash('warning', 'No se encuentra el registro solicitado');
+        else
+        {
+            session()->flash('warning','No se encuentra el registro solicitado');
         }
         return redirect()->route('career.index');
     }
 }
-

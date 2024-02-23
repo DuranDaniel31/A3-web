@@ -1,13 +1,12 @@
 @extends('templates.base')
-@section('title', 'Listado de ambientes de aprendizaje')
-@section('header', 'Listado de ambientes de aprendizaje')
+@section('title', 'Listado Entornos')
+@section('header','Listado Entornos')
 @section('content')
     <div class="row">
-        <div class="col-lg-12 mb-4 d-grip gap-2 d--md-block">
+        <div class="col-lg-12 mb-4 d-grip grap-2 d-md-block">
             <a href="{{ route('learning_environment.create') }}" class="btn btn-primary">Crear</a>
         </div>
     </div>
-
     @include('templates.messages')
 
     <div class="row">
@@ -18,44 +17,51 @@
                         <th>Id</th>
                         <th>Nombre</th>
                         <th>Capacidad</th>
-                        <th>Area en mt2</th>
+                        <th>Area mt2</th>
                         <th>Piso</th>
                         <th>Inventario</th>
                         <th>Tipo</th>
-                        <th>Locación</th>
+                        <th>Ubicacion</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Aula 210</td>
-                        <td>30</td>
-                        <td>15</td>
-                        <td>3</td>
-                        <td>1 tv, 1 tablero</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>
-                            <a href="#" title="editar" 
-                                class="btn btn-info btn-circle btn-sm">
-                                <i class="far fa-edit"></i>
-                            </a>
-                            <a href="#" title="eliminar" 
-                                class="btn btn-danger btn-circle btn-sm"
-                                onclick="return remove()">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
+                    @foreach ($learning_environments as $learning_environment)
 
+                            <tr>
+                                <td>{{ $learning_environment['id'] }}</td>
+                                <td>{{ $learning_environment['name'] }}</td>
+                                <td>{{ $learning_environment['capacity'] }}</td>
+                                <td>{{ $learning_environment['area_mt2'] }}</td>
+                                <td>{{ $learning_environment['floor'] }} </td>
+                                <td>{{ $learning_environment['inventory'] }} </td>
+                                <td>{{ $learning_environment->environment_type->description }}</td>
+                                <td>{{ $learning_environment->location->name}}</td>
+                                <td>{{ $learning_environment['status']}}</td>
+
+
+                                <td>
+                                    <a href="{{ route('learning_environment.edit', $learning_environment  ['id']) }}" title="editar" class="btn btn-info btn-circle btn-sm">
+                                        <i class="far fa-edit"></i>
+                                    </a>
+                                    <a href="{{ route('learning_environment.destroy', $learning_environment ['id']) }}" title="eliminar" class="btn btn-danger btn-circle btn-sm" onclick="return remove();">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                    @endforeach
+                </tbody>
             </table>
+
         </div>
     </div>
 
 @endsection
-
 @section('scripts')
-    <script src="{{ asset('js/general.js') }}"></script>
-@endsection
+       <script src="{{ asset('js/general.js') }}"></script>
 
+
+
+@endsection

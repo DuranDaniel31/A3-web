@@ -12,8 +12,8 @@ class EnvironmentTypeController extends Controller
      */
     public function index()
     {
-        $environment_types = EnvironmentType::all();
-        return view('environment_type.index', compact('environment_types'));
+        $environments_types = EnvironmentType ::all();
+        return view('environment_type.index', compact('environments_types'));
     }
 
     /**
@@ -30,7 +30,7 @@ class EnvironmentTypeController extends Controller
     public function store(Request $request)
     {
         $environment_type = EnvironmentType::create($request->all());
-        session()->flash('message', 'Registro creado exitosamente');
+        session()->flash('message','Registro creado exitosamente');
         return redirect()->route('environment_type.index');
     }
 
@@ -48,9 +48,12 @@ class EnvironmentTypeController extends Controller
     public function edit(string $id)
     {
         $environment_type = EnvironmentType::find($id);
-        if ($environment_type) {
-            return view('environment_type.edit', compact('environment_type'));//si la causal existe
-        } else {
+        if($environment_type)
+        {
+            return view('environment_type.edit', compact('environment_type' ));
+        }
+        else
+        {
             return redirect()->route('environment_type.index');
         }
     }
@@ -61,12 +64,14 @@ class EnvironmentTypeController extends Controller
     public function update(Request $request, string $id)
     {
         $environment_type = EnvironmentType::find($id);
-        if ($environment_type)//si la causal existe
+        if($environment_type)
         {
-            $environment_type->update($request->all());//delete from causal where id = x
-            session()->flash('message', 'Registro actualizado exitosamente');
-        } else {
-            session()->flash('warning', 'No se encuentra el registro solicitado');
+            $environment_type->update($request->all());
+            session()->flash('message','Registro actualizado exitosamente');
+        }
+        else
+        {
+            session()->flash('warning','No se encuentra el registro solicitado');
         }
         return redirect()->route('environment_type.index');
     }
@@ -77,11 +82,14 @@ class EnvironmentTypeController extends Controller
     public function destroy(string $id)
     {
         $environment_type = EnvironmentType::find($id);
-        if ($environment_type) {
-            $environment_type->delete();//delete from causal where id = x
-            session()->flash('message', 'Registro eliminado exitosamente');
-        } else {
-            session()->flash('warning', 'No se encuentra el registro solicitado');
+        if($environment_type)
+        {
+            $environment_type->delete();
+            session()->flash('message','Registro eliminado exitosamente');
+        }
+        else
+        {
+            session()->flash('warning','No se encuentra el registro solicitado');
         }
         return redirect()->route('environment_type.index');
     }

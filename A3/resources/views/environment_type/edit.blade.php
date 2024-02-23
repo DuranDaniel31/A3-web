@@ -1,13 +1,10 @@
 @extends('templates.base')
-
-@section('title', 'Editar tipo de ambientes')
-@section('header', 'Editar tipo de ambientes')
-
+@section('title', 'Editar Tipo de ambiente')
+@section('header', 'Editar Tipo de ambiente')
 @section('content')
     @include('templates.messages')
-
     <div class="row">
-        <div class="col lg-12 mb-4">
+        <div class="col-lg-12 mb-4">
             <form action="{{ route('environment_type.update', $environment_type['id']) }}" method="POST">
                 @csrf
                 @method('PUT')
@@ -19,10 +16,10 @@
                         value="{{ $environment_type['description'] }}">
                     </div>
                 </div>
-
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
-                        <button type="submit" class="btn btn-primary btn-block">
+                        <button class="btn btn-primary btn-block"
+                            type="submit">
                             Guardar
                         </button>
                     </div>
@@ -30,17 +27,10 @@
                         <a href="{{ route('environment_type.index') }}" class="btn btn-secondary btn-block">
                             Cancelar
                         </a>
+
                     </div>
                 </div>
             </form>
-            <div class="row">
-                <div class="col-lg-12 mb-4">
-                    <div class="alert alert-warning" role="alert">
-                        <i class="fa-solid fa-lightbulb"></i>
-                        Para añadir actividades a la Actividad primero debe crearlas y luego dar click en la accion editar
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 @endsection
