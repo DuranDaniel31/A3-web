@@ -16,25 +16,25 @@
                             value="{{ $instructor['document'] }}">
 
                     </div>
-
+            
                     <div class="col-lg-4 mb-4">
                         <label for="fullname">Nombre</label>
                         <input type="text" class="form-control"
                         id="fullname" name="fullname" required
                         value="{{ $instructor['fullname'] }}">
                     </div>
-
+                                
                     <div class="col-lg-4 mb-4">
                         <label for="sena_email">Correo Sena</label>
-                        <input type="email" class="sena_email"
+                        <input type="email" class="form-control"
                         id="sena_email" name="sena_email" required
                         value="{{ $instructor['sena_email'] }}">
-
-
+                        
+                        
                     </div>
-                </div>
+                </div>    
 
-
+                
                 <div class="row form-group">
 
                     <div class="col-lg-4 mb-4">
@@ -42,9 +42,9 @@
                         <input type="email" class="form-control"
                         id="personal_email" name="personal_email" required
                         value="{{ $instructor['personal_email'] }}">
-
+                        
                     </div>
-
+                    
                     <div class="col-lg-4 mb-4">
                             <label for="phone">Telefono</label>
                             <input type="number" class="form-control"
@@ -75,24 +75,24 @@
                     @endforeach
                         </select>
                     </div>
-
+                    
                     <div class="col-lg-6 mb-4">
                             <label for="profile">Perfil</label>
                             <input type="text" class="form-control"
                             id="profile" name="profile" required
                             value="{{ $instructor['profile'] }}">
-
+                            
                     </div>
 
                 </div>
 
-
+                
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
                         <button class="btn btn-primary btn-block"
-                            type="submit">
-                            Guardar
-                        </button>
+                        type="submit">
+                        Guardar
+                    </button>
                     </div>
                     <div class="col-lg-6 mb-4">
                         <a href="{{ route('instructor.index') }}" class="btn btn-secondary btn-block">

@@ -14,52 +14,57 @@
                             class="form-control" required>
                             <option value="">Seleccione</option>
                             @foreach ($courses as $course)
-                            <option value="{{ $course ['id']}}">
+                            <option value="{{ $course ['id']}}"
+                            @if (old('course_id') == $course['code']) selected @endif>
                                 {{ $course ['code']}}
                             </option>
-
+                            
                             @endforeach
-
+                            
                             </select>
                     </div>
-
+            
                     <div class="col-lg-4 mb-4">
                         <label for="instructor_id">Instructor</label>
                         <select name="instructor_id" id="instructor_id"
                         class="form-control" required>
                         <option value="">Seleccione</option>
                         @foreach ($instructors as $instructor)
-                            <option value="{{ $instructor ['id']}}">
+                            <option value="{{ $instructor ['id']}}"
+                            @if (old('instructor_id') == $instructor['fullname']) selected @endif>
                                 {{ $instructor ['fullname']}}
                             </option>
-
+                            
                         @endforeach
                         </select>
                     </div>
-
+                                
                     <div class="col-lg-4 mb-4">
                         <label for="date_scheduling">Fecha de programacion</label>
                         <input type="date" class="form-control"
-                        id="date_scheduling" name="date_scheduling" required>
-
-
+                        id="date_scheduling" name="date_scheduling" required
+                        value="{{ old('date_scheduling') }}">
+                        
+                        
                         </select>
                     </div>
-                </div>
+                </div>    
 
-
+                
                 <div class="row form-group">
 
                     <div class="col-lg-4 mb-4">
                         <label for="initial_hour">Hora inicial</label>
                         <input type="time" class="form-control"
-                        id="initial_hour" name="initial_hour" required>
+                        id="initial_hour" name="initial_hour" required
+                        value="{{ old('initial_hour') }}">
                     </div>
-
+                    
                     <div class="col-lg-4 mb-4">
                         <label for="final_hour">Hora final</label>
                         <input type="time" class="form-control"
-                        id="final_hour" name="final_hour" required>
+                        id="final_hour" name="final_hour" required
+                        value="{{ old('final_hour') }}">
                     </div>
 
                     <div class="col-lg-4 mb-4">
@@ -68,15 +73,16 @@
                         class="form-control" required>
                         <option value="">Seleccione</option>
                         @foreach ($learning_environments as $learning_environment)
-                            <option value="{{ $learning_environment ['id']}}">
+                            <option value="{{ $learning_environment ['id']}}"
+                            @if (old('environment_id') == $learning_environment['name']) selected @endif>
                                 {{ $learning_environment ['name']}}
-                            </option>
+                            </option>                        
                         @endforeach
                         </select>
-
+                        
                     </div>
                 </div>
-
+                
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
                         <button class="btn btn-primary btn-block"

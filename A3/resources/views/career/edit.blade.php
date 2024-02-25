@@ -16,7 +16,7 @@
                         id="name" name="name" required
                         value="{{ $career['name'] }}">
                     </div>
-
+                
 
                     <div class="col-lg-6 mb-4">
                         <label for="type">Tipo</label>
@@ -26,11 +26,11 @@
                         @foreach ($types as $type)
                             <option value="{{ $type['value'] }}">
                                 {{ $type['name'] }}</option>
-                        @endforeach
+                        @endforeach                
                         </select>
                     </div>
                 </div>
-
+                
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
                         <button class="btn btn-primary btn-block"

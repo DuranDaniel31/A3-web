@@ -29,7 +29,7 @@
                 </thead>
                 <tbody>
                     @foreach ($learning_environments as $learning_environment)
-
+                         
                             <tr>
                                 <td>{{ $learning_environment['id'] }}</td>
                                 <td>{{ $learning_environment['name'] }}</td>
@@ -40,8 +40,8 @@
                                 <td>{{ $learning_environment->environment_type->description }}</td>
                                 <td>{{ $learning_environment->location->name}}</td>
                                 <td>{{ $learning_environment['status']}}</td>
-
-
+                                
+                                
                                 <td>
                                     <a href="{{ route('learning_environment.edit', $learning_environment  ['id']) }}" title="editar" class="btn btn-info btn-circle btn-sm">
                                         <i class="far fa-edit"></i>
@@ -61,7 +61,7 @@
 @endsection
 @section('scripts')
        <script src="{{ asset('js/general.js') }}"></script>
-
-
-
+        
+    
+    
 @endsection

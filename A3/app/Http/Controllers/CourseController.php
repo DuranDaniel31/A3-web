@@ -5,9 +5,29 @@ namespace App\Http\Controllers;
 use App\Models\Career;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CourseController extends Controller
 {
+    private $rules =[
+        'code' =>'required|numeric|max:9999999999|min:3',
+        'shift' => 'required|string|max:70|min:3',
+        'career_id' => 'numeric',
+        'initial_date' => 'required|date|date_format:Y-m-d',
+        'final_date' => 'required|date|date_format:Y-m-d',
+        'status' => 'required|string|max:20|min:3'
+
+    ];
+    
+    private $traductionAttributes = [
+        'code' => 'ficha',
+        'shift' => 'jornada',
+        'career_id' => 'carrera',
+        'initial_date' => 'fecha inicial',
+        'final_date' => 'fecha final',
+        'status' => 'estado',
+    ];
+
     /**
      * Display a listing of the resource.
      */
@@ -21,7 +41,7 @@ class CourseController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
+    {        
         $careers = Career::all();
         $shifts = array(
             ['name' => 'DIURNA' , 'value' => 'DIURNA'],
@@ -41,6 +61,13 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), $this->rules);
+        $validator->setAttributeNames($this->traductionAttributes);
+        if($validator->fails())
+        {
+            $errors = $validator->errors();
+            return redirect()->route('course.create')->withInput()->withErrors($errors);
+        }
         $course = Course::create($request->all());
         session()->flash('message','Registro creado exitosamente');
         return redirect()->route('course.index');
@@ -85,10 +112,17 @@ class CourseController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validator = Validator::make($request->all(), $this->rules);
+        $validator->setAttributeNames($this->traductionAttributes);
+        if($validator->fails())
+        {
+            $errors = $validator->errors();
+            return redirect()->route('course.edit' , $id)->withInput()->withErrors($errors);
+        }
         $course = Course::find($id);
         if($course)
         {
-            $course->update($request->all());
+            $course->update($request->all()); 
             session()->flash('message','Registro actualizado exitosamente');
         }
         else
@@ -106,7 +140,7 @@ class CourseController extends Controller
         $course = Course::find($id);
         if($course)
         {
-            $course->delete();
+            $course->delete(); 
             session()->flash('message','Registro eliminado exitosamente');
         }
         else

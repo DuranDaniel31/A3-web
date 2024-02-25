@@ -4,15 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\EnvironmentType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class EnvironmentTypeController extends Controller
 {
+    private $rules =[
+        'description' =>'required|string|max:100|min:3',
+    ];
+
+    private $traductionAttributes = [
+        'description' => 'descripción',  
+
+    ];
+
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $environments_types = EnvironmentType ::all();
+        $environments_types = EnvironmentType ::all(); 
         return view('environment_type.index', compact('environments_types'));
     }
 
@@ -29,6 +40,13 @@ class EnvironmentTypeController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), $this->rules);
+        $validator->setAttributeNames($this->traductionAttributes);
+        if($validator->fails())
+        {
+            $errors = $validator->errors();
+            return redirect()->route('environment_type.create')->withInput()->withErrors($errors);
+        }
         $environment_type = EnvironmentType::create($request->all());
         session()->flash('message','Registro creado exitosamente');
         return redirect()->route('environment_type.index');
@@ -37,7 +55,7 @@ class EnvironmentTypeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id)                             
     {
         //
     }
@@ -63,10 +81,19 @@ class EnvironmentTypeController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
+        $validator = Validator::make($request->all(), $this->rules);
+        $validator->setAttributeNames($this->traductionAttributes);
+        if($validator->fails())
+        {
+            $errors = $validator->errors();
+            return redirect()->route('environment_type.edit', $id)->withInput()->withErrors($errors);
+        }
+
         $environment_type = EnvironmentType::find($id);
         if($environment_type)
         {
-            $environment_type->update($request->all());
+            $environment_type->update($request->all()); 
             session()->flash('message','Registro actualizado exitosamente');
         }
         else

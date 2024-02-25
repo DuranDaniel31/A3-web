@@ -9,18 +9,21 @@ class Instructor extends Model
 {
     use HasFactory;
     protected $table = 'instructor';
-    protected $fillable = ['document',
-    'fullname',
-    'sena_email',
-    'personal_email',
-    'phone',
-    'password',
-    'type',
-    'profile'];
+    protected $fillable = 
+    [
+        'document',
+        'fullname',
+        'sena_email',
+        'personal_email',
+        'phone',
+        'password',
+        'type',
+        'profile'
+    ];
 
-    public function Scheduling_enviroment()
+    public function scheduling_environments()
     {
         return $this->hasMany(SchedulingEnvironment::class);
     }
-    
+
 }

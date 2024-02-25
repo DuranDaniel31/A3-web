@@ -11,22 +11,24 @@
                     <div class="col-lg-6 mb-4">
                         <label for="name">Nombre</label>
                         <input type="text" class="form-control"
-                        id="name" name="name" required>
+                        id="name" name="name" required
+                        value="{{ old('name') }}">
                     </div>
-
+                
                     <div class="col-lg-6 mb-4">
                         <label for="type">Tipo</label>
                         <select name="type" id="type"
                          class="form-control" required>
                         <option value="">Seleccione</option>
                     @foreach ($types as $type)
-                        <option value="{{ $type['value'] }}">
+                        <option value="{{ $type['value'] }}"   
+                        @if (old('type') == $type['name']) selected @endif>
                             {{ $type['name'] }}</option>
-                    @endforeach
+                    @endforeach                  
                         </select>
                     </div>
                 </div>
-
+                
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
                         <button class="btn btn-primary btn-block"

@@ -8,21 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class SchedulingEnvironment extends Model
 {
     use HasFactory;
-    protected $table = 'sheduling_enviroment';
-    protected $fillable = [ 'course_id',
-    'document_instructor',
-    'date_scheduling',
-    'initial_hour',
-    'final_hour',
-    'enviroment_id'];
-
-    public function sheduling_enviroment()
+    protected $table = 'scheduling_environment';
+    protected $fillable = 
+    [
+        'course_id',
+        'instructor_id',
+        'date_scheduling',
+        'initial_hour',
+        'final_hour',
+        'environment_id'
+    ];
+    public function course()
     {
-        return $this->belongsTo(SchedulingEnvironment::class,'id_enviroment');
+        return $this->belongsTo(Course::class);
     }
-
     public function instructor()
     {
-        return $this->belongsTo(Instructor::class,'document');
+        return $this->belongsTo(Instructor::class, 'instructor_id');
+    }
+    public function learning_environment()
+    {
+        return $this->belongsTo(LearningEnvironment::class, 'environment_id');
     }
 }

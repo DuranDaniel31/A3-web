@@ -15,37 +15,37 @@
                             class="form-control" required>
                             <option value="">Seleccione</option>
                             @foreach ($courses as $course)
-                                <option value="{{$course['id']}}"
+                                <option value="{{$course['id']}}" 
                                     @if ($course['id'] == $scheduling_environment['course_id'])
-                                    selected @endif>
-                                    {{ $course['code'] }}
+                                    selected @endif> 
+                                    {{ $course['code'] }}                                    
                                 </option>
-                            @endforeach
+                            @endforeach                            
                         </select>
                     </div>
-
+            
                     <div class="col-lg-4 mb-4">
                         <label for="instructor_id">Instructor</label>
                         <select name="instructor_id" id="instructor_id"
                         class="form-control" required>
                         <option value="">Seleccione</option>
                             @foreach ($instructors as $instructor)
-                                <option value="{{$instructor['id']}}"
+                                <option value="{{$instructor['id']}}" 
                                     @if ($instructor['id'] == $scheduling_environment['instructor_id'])
-                                    selected @endif>
+                                    selected @endif> 
                                     {{ $instructor['fullname'] }}
                                 </option>
-                            @endforeach
+                            @endforeach                       
                         </select>
                     </div>
-
+                                
                     <div class="col-lg-4 mb-4">
                         <label for="date_scheduling">Fecha de programacion</label>
                         <input type="date" class="form-control"
                         id="date_scheduling" name="date_scheduling" required
                         value="{{ $scheduling_environment['date_scheduling'] }}">
                     </div>
-                </div>
+                </div>     
                 <div class="row form-group">
 
                     <div class="col-lg-4 mb-4">
@@ -54,7 +54,7 @@
                         id="initial_hour" name="initial_hour" required
                         value="{{ $scheduling_environment['initial_hour'] }}">
                     </div>
-
+                    
                     <div class="col-lg-4 mb-4">
                         <label for="final_hour">Hora final</label>
                         <input type="time" class="form-control"
@@ -68,17 +68,17 @@
                             class="form-control" required>
                             <option value="">Seleccione</option>
                             @foreach ($learning_environments as $learning_environment)
-                                <option value="{{$learning_environment['id']}}"
+                                <option value="{{$learning_environment['id']}}" 
                                     @if ($learning_environment['id'] == $scheduling_environment['environment_id'])
-                                    selected @endif>
+                                    selected @endif> 
                                     {{ $learning_environment['name'] }}
 
                                 </option>
                             @endforeach
-                        </select>
+                        </select>  
                     </div>
                 </div>
-
+                
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
                         <button class="btn btn-primary btn-block"

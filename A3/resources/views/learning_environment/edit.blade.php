@@ -30,9 +30,9 @@
                             id="area_mt2" name="area_mt2"
                             value="{{ $learning_environment['area_mt2'] }}">
                         </div>
-                    </div>
+                    </div>    
 
-
+                
                 <div class="row form-group">
 
                     <div class="col-lg-4 mb-4">
@@ -41,7 +41,7 @@
                         id="floor" name="floor" required
                         value="{{ $learning_environment['floor'] }}">
                     </div>
-
+                    
                     <div class="col-lg-4 mb-4">
                             <label for="inventory">Inventario</label>
                             <input type="text" class="form-control"
@@ -55,14 +55,14 @@
                             class="form-control" required>
                             <option value="">Seleccione</option>
                             @foreach ($environment_types as $environment_type)
-                                <option value="{{$environment_type['id']}}"
+                                <option value="{{$environment_type['id']}}" 
                                     @if ($environment_type['id'] == $learning_environment['type_id'])
-                                        selected @endif>
+                                        selected @endif> 
                                     {{ $environment_type['description'] }}
 
                                 </option>
                             @endforeach
-                       </select>
+                       </select>    
                     </div>
                 </div>
 
@@ -74,10 +74,10 @@
                              class="form-control" required>
                             <option value="">Seleccione</option>
                             @foreach ($locations as $location)
-                                <option value="{{$location['id']}}"
+                                <option value="{{$location['id']}}" 
                                     @if ($location['id'] == $learning_environment['location_id'])
-                                    selected @endif>
-                                    {{ $location['name'] }}
+                                    selected @endif> 
+                                    {{ $location['name'] }}                               
                                 </option>
                             @endforeach
                         </select>
@@ -88,10 +88,10 @@
                             class="form-control" required>
                             <option value="">Seleccione</option>
                             @foreach ($status as $s)
-                                <option value="{{$s['value']}}"
+                                <option value="{{$s['value']}}" 
                                     @if ($s['value'] == $learning_environment['s'])
-                                        selected @endif>
-                                    {{ $s['name'] }}
+                                        selected @endif> 
+                                    {{ $s['name'] }}                               
                                 </option>
                             @endforeach
                             </select>

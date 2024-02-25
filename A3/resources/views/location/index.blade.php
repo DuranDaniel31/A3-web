@@ -20,20 +20,20 @@
                         <th>Estado</th>
                         <th>Acciones</th>
 
-
+    
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($locations as $location)
                     <tr>
-
+                        
                         <td>{{ $location['id'] }}</td>
                         <td>{{ $location['name'] }}</td>
                         <td>{{ $location['address'] }}</td>
                         <td>{{ $location['status'] }}</td>
-
-
-
+            
+                    
+                        
                         <td>
                             <a href="{{ route('location.edit', $location['id']) }}" title="editar" class="btn btn-info btn-circle btn-sm">
                                 <i class="far fa-edit"></i>
@@ -53,7 +53,7 @@
 @endsection
 @section('scripts')
        <script src="{{ asset('js/general.js') }}"></script>
-
-
-
+        
+    
+    
 @endsection

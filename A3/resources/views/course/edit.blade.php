@@ -15,28 +15,28 @@
                         id="code" name="code" required
                         value="{{ $course ['code']}}">
                     </div>
-
+               
                     <div class="col-lg-4 mb-4">
                         <label for="shift">Jornada</label>
                         <select type="text" class="form-control"
-                        id="type" name="type" required>
+                        id="shift" name="shift" required>
                         <option value="">Seleccione</option>
                             @foreach ($shifts as $shift)
-                                <option value="{{ $shift['value'] }}"
+                                <option value="{{ $shift['value'] }}"  
                                     @if($shift['value'] == $course['shift']) selected @endif>
                                     {{ $shift['name'] }}
                                 </option>
-                            @endforeach
+                            @endforeach  
                         </select>
                     </div>
-
+                
                     <div class="col-lg-4 mb-4">
                         <label for="career_id">Carrera</label>
                         <select name="carrer_id" id="career_id"
                         class="form-control" required>
-                        <option value="">Seleccione</option>
+                        <option value="">Seleccione</option>                    
                         @foreach ($careers as $career)
-                            <option value="{{ $career['id'] }}"
+                            <option value="{{ $career['id'] }}" 
                                 @if($career['id'] == $course['career_id']) selected @endif >
                                     {{ $career['name'] }}
                                     {{ $career['type'] }}
@@ -45,7 +45,7 @@
                         </select>
                     </div>
                 </div>
-
+                
 
                 <div class="row form-group">
                     <div class="col-lg-4 mb-4">
@@ -54,25 +54,25 @@
                         id="initial_date" name="initial_date" required
                         value="{{ $course ['initial_date']}}">
                     </div>
-
+                
                     <div class="col-lg-4 mb-4">
                         <label for="final_date">Fecha final</label>
                         <input type="date" class="form-control"
                         id="final_date" name="final_date" required
                         value="{{ $course ['final_date']}}">
                     </div>
-
+                
                     <div class="col-lg-4 mb-4">
                         <label for="status">Estado</label>
                         <select name="status" id="status"
                         class="form-control" required>
                         <option value="activo">Seleccione</option>
                             @foreach ($status as $s)
-                                <option value="{{ $s['value'] }}"
+                                <option value="{{ $s['value'] }}"  
                                     @if($s['value'] == $course['status']) selected @endif>
                                     {{ $s['name'] }}
                         </option>
-                            @endforeach
+                            @endforeach   
                         </select>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                         </button>
                     </div>
                     <div class="col-lg-6 mb-4">
-                        <a href="{{ route('career.index') }}" class="btn btn-secondary btn-block">
+                        <a href="{{ route('course.index') }}" class="btn btn-secondary btn-block">
                             Cancelar
                         </a>
                     </div>

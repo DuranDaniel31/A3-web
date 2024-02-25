@@ -27,9 +27,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($scheduling_environments as $scheduling_environment)
+                    @foreach ($scheduling_environments as $scheduling_environment)                   
                         <tr>
-
+                            
                             <td>{{ $scheduling_environment['id'] }}</</td>
                             <td>{{ $scheduling_environment->course->code}}</td>
                             <td>{{ $scheduling_environment->instructor->fullname}}</td>
@@ -37,8 +37,8 @@
                             <td>{{ $scheduling_environment['initial_hour'] }}</td>
                             <td>{{ $scheduling_environment['final_hour'] }}</td>
                             <td>{{ $scheduling_environment->learning_environment->name}}</td>
-
-
+                            
+                            
                             <td>
                                 <a href="{{ route('scheduling_environment.edit', $scheduling_environment ['id']) }}" title="editar" class="btn btn-info btn-circle btn-sm">
                                     <i class="far fa-edit"></i>
@@ -58,7 +58,7 @@
 @endsection
 @section('scripts')
        <script src="{{ asset('js/general.js') }}"></script>
-
-
-
+        
+    
+    
 @endsection

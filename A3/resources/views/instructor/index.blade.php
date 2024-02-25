@@ -30,7 +30,7 @@
                 </thead>
                 <tbody>
                     @foreach ($instructors as $instructor)
-
+                        
                         <tr>
                             <td>{{ $instructor['id'] }}</td>
                             <td>{{ $instructor['document'] }}</td>
@@ -42,7 +42,7 @@
                             <td>{{ $instructor['type'] }}</td>
                             <td>{{ $instructor['profile'] }}</td>
 
-
+                        
                             <td>
                                 <a href="{{ route('instructor.edit' , $instructor['id']) }}" title="editar" class="btn btn-info btn-circle btn-sm">
                                     <i class="far fa-edit"></i>
@@ -63,7 +63,7 @@
 @endsection
 @section('scripts')
        <script src="{{ asset('js/general.js') }}"></script>
-
-
-
+        
+    
+    
 @endsection

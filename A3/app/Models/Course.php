@@ -2,26 +2,37 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\SchedulingEnvironmentController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
     use HasFactory;
-
     protected $table = 'course';
-    protected $fillable = ['shift', 'id_career', 'initial_date', 'final_date', 'status'];
+    protected $fillable = 
+    [  
+        'code',
+        'shift',
+        'career_id',
+        'initial_date',
+        'final_date',
+        'status'
+    ];
 
-    public function career()
+    
+    public function careers()
     {
-        return $this->belongsTo(Career::class,'id_career');
+        return $this->hasMany(Career::class);
     }
 
-    public function sheduling_enviroment()
+    public function scheduling_environments()
     {
-        return $this->belongsTo(SchedulingEnvironment::class, 'id_course');
-
+        return $this->hasMany(SchedulingEnvironment::class);
     }
 
     
+    
+
+
 }
