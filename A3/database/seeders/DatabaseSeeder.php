@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(CareerSeeder::class);
         $this->call(EnvironmentTypeSeeder::class);
-       /* $this->call(CourseSeeder::class);*/
+        /*$this->call(CourseSeeder::class);*/
         $this->call(LocationSeeder::class);
 
         Instructor::factory()->create([
@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
         Instructor::factory()->create([
             'type' => 'Planta',
             'profile' => 'Instructor De TICS'
-        ]); 
+        ]);
         Instructor::factory()->create([
             'type' => 'Planta',
             'profile' => 'Instructor De Matematicas'
@@ -43,16 +43,16 @@ class DatabaseSeeder extends Seeder
             'type' => 'Planta',
             'profile' => 'Instructor De Integralidad'
         ]);
-        
+
 
         User::factory(5)->create();
 
         $this->call(TestLocationSeeder::class);
         $this->call(TestCareerSeeder::class);
-        /*$this->call(TestInstructorSeeder::class);*/
+      /*  $this->call(TestInstructorSeeder::class);*/
         $this->call(TestEnvironmentTypeSeeder ::class);
 
-        $this->call(TestLearningEnvironmentSeeder::class); 
-        $this->call(TestSchedulingEnviromentSeeder::class);
+        $this->call(TestLearningEnvironmentSeeder::class);
+        $this->call(TestSchedulingEnvironmentSeeder::class);
     }
 }

@@ -9,7 +9,7 @@ class SchedulingEnvironment extends Model
 {
     use HasFactory;
     protected $table = 'scheduling_environment';
-    protected $fillable = 
+    protected $fillable =
     [
         'course_id',
         'instructor_id',

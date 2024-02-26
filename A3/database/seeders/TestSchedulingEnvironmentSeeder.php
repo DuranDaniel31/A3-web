@@ -9,28 +9,23 @@ use App\Models\SchedulingEnvironment;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TestSchedulingEnviromentSeeder extends Seeder
+class TestSchedulingEnvironmentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
-    {
-        $scheduling_enviroment = new SchedulingEnvironment();
-        
-        $course = Course::find(1);
-        $scheduling_enviroment->course_id = $course->id;
-        
-        $instructor = Instructor::find(1);
-        $scheduling_enviroment->instructor_id = $instructor->id;
+    {   $course = Course::find(1);
+        $instructor = Instructor::find(6);
+        $learning_environment = LearningEnvironment::find(1);
 
-        $scheduling_enviroment->date_scheduling = '2024-01-30';
-        $scheduling_enviroment->initial_hour = '08:00';
-        $scheduling_enviroment->final_hour = '12:00';
-
-        $learning_enviroment = LearningEnvironment::find(1);
-        $scheduling_enviroment->enviroment_id = $learning_enviroment->id;
-        $scheduling_enviroment->save();
-        
+        $scheduling_environment = new SchedulingEnvironment();
+        $scheduling_environment->course_id = $course->id;
+        $scheduling_environment->instructor_id = $instructor->id;
+        $scheduling_environment->date_scheduling = '2024-01-29';
+        $scheduling_environment->initial_hour = '7:00 ';
+        $scheduling_environment->final_hour = '12:00 ';
+        $scheduling_environment->environment_id = $learning_environment->id;
+        $scheduling_environment->save();
     }
 }

@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('course', function (Blueprint $table) {
             $table->id();
-          
-            $table->string('shift')->comment('Tipo De Jornada');
-            $table->foreignId('career_id')->constrained('career')->onDelete('cascade')->onUpdate('cascade');
-            $table->date('initial_date')->comment('Fecha Inicial');
-            $table->date('final_date')->comment('Fecha De Finalización');
-            $table->string('status')->comment('Etapa, Induccion, Productiva, Lectiva');
+            $table->integer('code')->unique()->comment('codigo de ficha');
+            $table->string('shift')->comment('jornada');
+            $table->foreignId('career_id')->constrained('career')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+            $table->date('initial_date')->comment('fecha inicial');
+            $table->date('final_date')->comment('fecha final');
+            $table->string('status')->comment('etapa');
             $table->timestamps();
         });
     }
