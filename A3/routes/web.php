@@ -7,8 +7,10 @@ use App\Http\Controllers\EnvironmentTypeController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\LearningEnvironmentController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SchedulingEnvironmentController;
 use App\Models\Career;
+use App\Models\LearningEnvironment;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,16 +27,15 @@ Route::get('/', [AuthController::class, 'index']);
 
 Route::middleware('auth')->get('/index', function () {
     return view('index');
-    
+
 })->name('index');
 
 Route::prefix('auth')->group(function(){
     Route::get('/index', [AuthController::class, 'index'])->name('auth.index');
     Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
     Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-    Route::get('/register', [AuthController::class, 'create'])->name('auth.register');
-    Route::post('/register', [AuthController::class, 'store'])->name('auth.store');
-  
+
+
 });
 
 
@@ -45,7 +46,7 @@ Route::middleware('auth')->prefix('career')->group(function(){
     Route::post('/create', [CareerController::class, 'store'])->name('career.store');
     Route::put('/edit/{id}', [CareerController::class, 'update'])->name('career.update');
     Route::get('/destroy/{id}', [CareerController::class, 'destroy'])->name('career.destroy');
-}); 
+});
 
 
 Route::middleware('auth')->prefix('course')->group(function(){
@@ -55,7 +56,8 @@ Route::middleware('auth')->prefix('course')->group(function(){
     Route::post('/create', [CourseController::class, 'store'])->name('course.store');
     Route::put('/edit/{id}', [CourseController::class, 'update'])->name('course.update');
     Route::get('/destroy/{id}', [CourseController::class, 'destroy'])->name('course.destroy');
-}); 
+    Route::get('/export_courses', [CourseController::class, 'export_courses'])->name('courses.reports');
+});
 
 Route::middleware('auth')->prefix('environment_type')->group(function(){
     Route::get('/index', [EnvironmentTypeController::class, 'index'])->name('environment_type.index');
@@ -64,7 +66,7 @@ Route::middleware('auth')->prefix('environment_type')->group(function(){
     Route::post('/create', [EnvironmentTypeController::class, 'store'])->name('environment_type.store');
     Route::put('/edit/{id}', [EnvironmentTypeController::class, 'update'])->name('environment_type.update');
     Route::get('/destroy/{id}', [EnvironmentTypeController::class, 'destroy'])->name('environment_type.destroy');
-}); 
+});
 
 
 
@@ -75,7 +77,7 @@ Route::middleware('auth')->prefix('instructor')->group(function(){
     Route::post('/create', [InstructorController::class, 'store'])->name('instructor.store');
     Route::put('/edit/{id}', [InstructorController::class, 'update'])->name('instructor.update');
     Route::get('/destroy/{id}', [InstructorController::class, 'destroy'])->name('instructor.destroy');
-}); 
+});
 
 Route::middleware('auth')->prefix('learning_environment')->group(function(){
     Route::get('/index', [LearningEnvironmentController::class, 'index'])->name('learning_environment.index');
@@ -84,7 +86,11 @@ Route::middleware('auth')->prefix('learning_environment')->group(function(){
     Route::post('/create', [LearningEnvironmentController::class, 'store'])->name('learning_environment.store');
     Route::put('/edit/{id}', [LearningEnvironmentController::class, 'update'])->name('learning_environment.update');
     Route::get('/destroy{id}', [LearningEnvironmentController::class, 'destroy'])->name('learning_environment.destroy');
-}); 
+    Route::get('/reports',[LearningEnvironmentController::class,'reports'])->name('learning_environment.reports');
+    Route::post('/export_learning_environments', [LearningEnvironmentController::class, 'export_learning_environments'])->name('learning_environments.reports');
+
+});
+
 Route::middleware('auth')->prefix('location')->group(function(){
     Route::get('/index', [LocationController::class, 'index'])->name('location.index');
     Route::get('/create', [LocationController::class, 'create'])->name('location.create');
@@ -92,7 +98,7 @@ Route::middleware('auth')->prefix('location')->group(function(){
     Route::post('/create', [LocationController::class, 'store'])->name('location.store');
     Route::put('/edit/{id}', [LocationController::class, 'update'])->name('location.update');
     Route::get('/destroy/{id}', [LocationController::class, 'destroy'])->name('location.destroy');
-}); 
+});
 
 
 Route::middleware('auth')->prefix('scheduling_environment')->group(function(){
@@ -102,8 +108,18 @@ Route::middleware('auth')->prefix('scheduling_environment')->group(function(){
     Route::post('/create', [SchedulingEnvironmentController::class, 'store'])->name('scheduling_environment.store');
     Route::put('/edit/{id}', [SchedulingEnvironmentController::class, 'update'])->name('scheduling_environment.update');
     Route::get('/destroy/{id}', [SchedulingEnvironmentController::class, 'destroy'])->name('scheduling_environment.destroy');
-}); 
+    Route::get('/reports', [SchedulingEnvironmentController::class, 'reports'])->name('scheduling_environment.reports');
+    Route::post('/export_scheduling_environments_by_course', [SchedulingEnvironmentController::class, 'export_scheduling_environments_by_course'])->name('scheduling_environment.report_by_course');
+    Route::post('/export_scheduling_environments_by_instructor', [SchedulingEnvironmentController::class, 'export_scheduling_environments_by_instructor'])->name('scheduling_environments.report_by_instructor');
+
+});
 
 
 
- 
+
+
+
+
+
+
+

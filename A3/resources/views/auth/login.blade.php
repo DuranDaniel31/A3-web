@@ -23,7 +23,7 @@
                             <div class="row">
                                 <div class="col-lg-6 d-none d-lg-block">
                                     <img src="{{ asset('img/login.jpg') }}" alt="login"
-                                    class="img-fluid">
+                                    class="img-fluid" width="600px">
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="p-5">

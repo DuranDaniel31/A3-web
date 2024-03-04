@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-
+use App\Http\Controllers\SchedulingEnvironmentController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,8 +10,8 @@ class Course extends Model
 {
     use HasFactory;
     protected $table = 'course';
-    protected $fillable =
-    [
+    protected $fillable = 
+    [  
         'code',
         'shift',
         'career_id',
@@ -20,10 +20,10 @@ class Course extends Model
         'status'
     ];
 
-
-    public function careers()
+    
+    public function career()
     {
-        return $this->hasMany(Career::class);
+        return $this->belongsTo(Career::class);
     }
 
     public function scheduling_environments()
@@ -31,8 +31,8 @@ class Course extends Model
         return $this->hasMany(SchedulingEnvironment::class);
     }
 
-
-
+    
+    
 
 
 }
